@@ -1,0 +1,1 @@
+- Visualização e postagem de notícias- Configuração de imagens com aws- Edição de texto com tags html- Cadastro de usuários- Cargo de usuários- Aprovação de notícias por ADM- Filtragem por categoria- Usuário favoritar notícias no perfil
