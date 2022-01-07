@@ -1,7 +1,7 @@
 module Api
   module V1
     class CategoriasController < ApplicationController
-      before_action :set_categoria, only: %i[show update delete]
+      before_action :set_categoria, only: %i[show update destroy]
 
       def index
         @categorias = ApiNoticia::Models::Categoria.all
@@ -15,9 +15,30 @@ module Api
         if context.success?
           render :show, status: 201
         else
-          render json: { mensagem: "erro" }, status: context.status || 400
+          render json: formatar_erro(context, :categoria), status: context.status || 400
         end
-       end
+      end
+
+      def update
+        context = Categoria::Atualizar.call(categoria_params: categoria_params,
+                                              categoria: @categoria)
+        @categoria = context.categoria
+        if context.success?
+          render :show, status: 200
+        else
+          render json: formatar_erro(context, :categoria), status: context.status || 400
+        end
+      end
+
+      def destroy
+        context = Categoria::Excluir.call(categoria: @categoria)
+
+        if context.success?
+          head :ok
+        else
+          render json: formatar_erro(context, :categoria), status: context.status || 400
+        end
+      end
 
       def set_categoria
         @categoria = ApiNoticia::Models::Categoria.find(params[:id])

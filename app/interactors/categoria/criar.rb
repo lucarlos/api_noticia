@@ -7,7 +7,7 @@ module Categoria
       required(:categoria_params).filled
     end
 
-    on_brach do |breaches|
+    on_breach do |breaches|
       mensagem = []
       breaches.each do |breach|
         mensagem << breach.messages
