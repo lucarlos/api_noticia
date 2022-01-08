@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_05_234815) do
+ActiveRecord::Schema.define(version: 2022_01_08_204128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,4 +22,24 @@ ActiveRecord::Schema.define(version: 2022_01_05_234815) do
     t.index ["nome"], name: "index_categorias_on_nome", unique: true, comment: "Index para buscar categorias por nome"
   end
 
+  create_table "publicacoes", force: :cascade do |t|
+    t.string "titulo", null: false
+    t.string "subtitulo", null: false
+    t.text "conteudo", null: false
+    t.string "imagem_principal", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "publicacoes_categorias", force: :cascade do |t|
+    t.bigint "categoria_id", null: false
+    t.bigint "publicacao_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["categoria_id"], name: "index_publicacoes_categorias_on_categoria_id"
+    t.index ["publicacao_id"], name: "index_publicacoes_categorias_on_publicacao_id"
+  end
+
+  add_foreign_key "publicacoes_categorias", "categorias"
+  add_foreign_key "publicacoes_categorias", "publicacoes"
 end

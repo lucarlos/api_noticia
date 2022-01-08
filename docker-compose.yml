@@ -1,6 +1,9 @@
 version: "3.8"
+volumes:
+  banco_local:
 services:
   noticia:
+    container_name: container_api_noticia
     build:
       dockerfile: Dockerfile.dev
       context: "."
@@ -11,6 +14,7 @@ services:
     depends_on:
       - postgres
   postgres:
+    container_name: container_db
     image: postgres:14.0
     restart: always
     environment:
@@ -18,5 +22,3 @@ services:
       POSTGRES_USER: postgres
     ports:
       - "5436:5432"
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data

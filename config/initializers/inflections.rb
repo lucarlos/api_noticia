@@ -63,4 +63,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   
     # Irregulares
     inflect.irregular "categoria", "categorias"
+    inflect.irregular "publicacao", "publicacoes"
+    inflect.irregular "publicacao_categoria", "publicacoes_categorias"
   end
