@@ -19,4 +19,10 @@ RSpec.describe ApiNoticia::Models::Categoria, type: :model do
       expect(categoria.nome).to eq('Curiosidades AA')
     end
   end
+
+  describe 'Associations' do
+    it { should have_many(:publicacoes_categorias).class_name('ApiNoticia::Models::PublicacaoCategoria') }
+    it { should have_many(:publicacoes).through(:publicacoes_categorias).class_name('ApiNoticia::Models::Publicacao') }
+  end
+  
 end

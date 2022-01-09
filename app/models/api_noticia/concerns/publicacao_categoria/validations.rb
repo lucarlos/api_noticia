@@ -4,7 +4,7 @@ module ApiNoticia
       module Validations
         extend ActiveSupport::Concern
 
-        included do
+        included do          
         end
       end
     end

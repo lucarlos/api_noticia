@@ -9,6 +9,7 @@ module ApiNoticia
         end
 
         private
+        
         def strip_nome
           self.nome = nome&.strip
         end
