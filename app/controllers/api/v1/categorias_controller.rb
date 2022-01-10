@@ -21,7 +21,7 @@ module Api
 
       def update
         context = Categoria::Atualizar.call(categoria_params: categoria_params,
-                                              categoria: @categoria)
+                                             categoria: @categoria)
         @categoria = context.categoria
         if context.success?
           render :show, status: 200
