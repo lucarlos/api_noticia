@@ -1,0 +1,399 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Noticia API",
+    "description": ""
+  },
+  "security": [
+
+  ],
+  "tags": [
+    {
+      "name": "Categorias",
+      "description": "Categorias de uma publicação"
+    }
+  ],
+  "paths": {
+    "/api/v1/categorias": {
+      "get": {
+        "summary": "GET categorias",
+        "operationId": "Categorias_Index",
+        "tags": [
+          "Categorias"
+        ],
+        "description": "Lista todas as categorias cadastradas",
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "resultados": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "description": "Id da categoria"
+                          },
+                          "nome": {
+                            "type": "string",
+                            "description": "Nome da categoria"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "POST categoria",
+        "operationId": "Categorias_Create",
+        "tags": [
+          "Categorias"
+        ],
+        "description": "Cadastra categoria",
+        "requestBody": {
+          "required": true,
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string",
+                    "description": "Nome da categoria"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "criado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "Id da categoria"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "description": "Nome da categoria"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "unprocessable entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mensagem": {
+                      "type": "string",
+                      "description": "mensagem de erro"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/categorias/{id}": {
+      "get": {
+        "summary": "GET categoria",
+        "operationId": "Categorias_Show",
+        "tags": [
+          "Categorias"
+        ],
+        "description": "Mostra dados da categoria buscada",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Id da categoria"
+            },
+            "description": "Id da categoria"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "Id da categoria"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "description": "Nome da categoria"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mensagem": {
+                      "type": "string",
+                      "description": "mensagem de erro"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "PUT/PATCH categoria",
+        "operationId": "update_categorias_v1_put",
+        "tags": [
+          "Categorias"
+        ],
+        "description": "Atualiza categoria",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Id da categoria"
+            },
+            "description": "Id da categoria"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "Id da categoria"
+                  },
+                  "nome": {
+                    "type": "string",
+                    "description": "Nome da categoria"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "Id da categoria"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "description": "Nome da categoria"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mensagem": {
+                      "type": "string",
+                      "description": "mensagem de erro"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "PUT/PATCH categoria",
+        "operationId": "update_categorias_v1_patch",
+        "tags": [
+          "Categorias"
+        ],
+        "description": "Atualiza categoria",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Id da categoria"
+            },
+            "description": "Id da categoria"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "Id da categoria"
+                  },
+                  "nome": {
+                    "type": "string",
+                    "description": "Nome da categoria"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "Id da categoria"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "description": "Nome da categoria"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mensagem": {
+                      "type": "string",
+                      "description": "mensagem de erro"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "DELETE categoria",
+        "operationId": "Categorias_Destroy",
+        "tags": [
+          "Categorias"
+        ],
+        "description": "Exclui categoria",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Id da categoria"
+            },
+            "description": "Id da categoria"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "404": {
+            "description": "not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mensagem": {
+                      "type": "string",
+                      "description": "mensagem de erro"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "unprocessable entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mensagem": {
+                      "type": "string",
+                      "description": "mensagem de erro"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+  }
+}
