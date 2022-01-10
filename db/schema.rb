@@ -22,18 +22,18 @@ ActiveRecord::Schema.define(version: 2022_01_08_204128) do
     t.index ["nome"], name: "index_categorias_on_nome", unique: true, comment: "Index para buscar categorias por nome"
   end
 
-  create_table "publicacoes", force: :cascade do |t|
-    t.string "titulo", null: false
-    t.string "subtitulo", null: false
-    t.text "conteudo", null: false
-    t.string "imagem_principal", null: false
+  create_table "publicacoes", comment: "Tabela de publicações de notícias", force: :cascade do |t|
+    t.string "titulo", null: false, comment: "Título da publicação"
+    t.string "subtitulo", null: false, comment: "Subtílo da publicação"
+    t.text "conteudo", null: false, comment: "Conteúdo da publicação"
+    t.string "imagem_principal", null: false, comment: "Url da imagem da publicação"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "publicacoes_categorias", force: :cascade do |t|
-    t.bigint "categoria_id", null: false
-    t.bigint "publicacao_id", null: false
+  create_table "publicacoes_categorias", comment: "Tabela de associação de muitos para muitos entre publicações e categorias", force: :cascade do |t|
+    t.bigint "categoria_id", null: false, comment: "Id da categoria"
+    t.bigint "publicacao_id", null: false, comment: "Id da publicação"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["categoria_id"], name: "index_publicacoes_categorias_on_categoria_id"
