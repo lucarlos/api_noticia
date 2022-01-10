@@ -27,6 +27,9 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+#The pagination helper outputs the HTML5 <nav> tag by default. Plus, the helper supports Rails unobtrusive Ajax.
+gem 'kaminari'
+
 #Interactors are used to encapsulate your application's business logic. Each interactor represents one thing that your application does. (context)
 gem "interactor", "~> 3.0"
 

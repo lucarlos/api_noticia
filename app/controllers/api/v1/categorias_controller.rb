@@ -4,7 +4,9 @@ module Api
       before_action :set_categoria, only: %i[show update destroy]
 
       def index
-        @categorias = ApiNoticia::Models::Categoria.all
+        @categorias = ApiNoticia::Models::Categoria.order(nome: :asc)
+                                                   .page(params[:page])
+                                                   .per(params[:per_page])
       end
 
       def show; end
@@ -21,7 +23,7 @@ module Api
 
       def update
         context = Categoria::Atualizar.call(categoria_params: categoria_params,
-                                              categoria: @categoria)
+                                            categoria: @categoria)
         @categoria = context.categoria
         if context.success?
           render :show, status: 200
