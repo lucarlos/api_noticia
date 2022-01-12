@@ -47,7 +47,7 @@ module Api
       end
 
       def publicacao_params
-        params.permit(:id, :titulo, :subtitulo, :conteudo, :imagem_principal,
+        params.permit(:id, :titulo, :subtitulo, :conteudo, :url_imagem_principal,
                       publicacoes_categorias_attributes: [:id, :publicacao_id, :categoria_id])
       end
     end

@@ -5,6 +5,8 @@ module ApiNoticia
         extend ActiveSupport::Concern
 
         included do
+          has_one_attached :file_imagem
+          
           has_many :publicacoes_categorias, class_name: 'ApiNoticia::Models::PublicacaoCategoria', foreign_key: :publicacao_id, inverse_of: :publicacao, dependent: :destroy
           has_many :categorias, through: :publicacoes_categorias, class_name: 'ApiNoticia::Models::Categoria'
 

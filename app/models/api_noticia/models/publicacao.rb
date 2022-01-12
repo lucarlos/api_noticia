@@ -3,7 +3,7 @@
 module ApiNoticia
   module Models
     class Publicacao < ApplicationRecord
-      self.table_name = 'publicacoes'
+      self.table_name = 'publicacoes'     
 
       include Concerns::Publicacao::Associations
       include Concerns::Publicacao::Callbacks

@@ -3,6 +3,6 @@ FactoryBot.define do
     titulo { Faker::Name.name }
     subtitulo { Faker::Name.name }
     conteudo { Faker::Lorem.characters(number: 1000) }
-    imagem_principal { Faker::Internet.domain_name + '.jpg' }
+    url_imagem_principal { Faker::Internet.domain_name + '.jpg' }
   end
 end
