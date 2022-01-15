@@ -5,7 +5,7 @@ module ApiNoticia
         extend ActiveSupport::Concern
 
         included do
-          validates :titulo, :subtitulo, :conteudo, :url_imagem_principal, presence: true
+          validates :titulo, :subtitulo, :conteudo, presence: true
         end
       end
     end

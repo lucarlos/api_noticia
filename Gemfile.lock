@@ -73,6 +73,22 @@ GEM
       rack-test (>= 1.1.0, < 2.0)
       rest-client (>= 2.0.2, < 3.0)
       rspec (~> 3.8)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.548.0)
+    aws-sdk-core (3.125.3)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.525.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.53.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.111.1)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.4.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     bindex (0.8.1)
     bootsnap (1.9.3)
       msgpack (~> 1.0)
@@ -150,6 +166,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.5.0)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -210,6 +227,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
+    rmagick (2.16.0)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -278,6 +296,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations
   airborne
+  aws-sdk-s3 (~> 1.111, >= 1.111.1)
   bootsnap
   byebug
   capybara
@@ -290,6 +309,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.0)
+  rmagick (~> 2.15, >= 2.15.4)
   rspec-rails (~> 5.0.2)
   selenium-webdriver
   shoulda-matchers (>= 4.3.0)

@@ -1,6 +1,4 @@
 version: "3.8"
-volumes:
-  banco_local:
 services:
   noticia:
     container_name: container_api_noticia

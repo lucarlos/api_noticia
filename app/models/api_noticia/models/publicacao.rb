@@ -3,6 +3,8 @@
 module ApiNoticia
   module Models
     class Publicacao < ApplicationRecord
+      attr_accessor :file_imagem
+
       self.table_name = 'publicacoes'     
 
       include Concerns::Publicacao::Associations

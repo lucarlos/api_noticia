@@ -9,6 +9,9 @@ gem "rails", "~> 7.0.0"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+# Gem de acesso aos serviço da amazon via aws
+gem 'aws-sdk-s3', '~> 1.111', '>= 1.111.1'
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
@@ -33,6 +36,9 @@ gem "interactor", "~> 3.0"
 #nteractor::Contracts is an extension to the interactor gem 
 #that gives you the ability to specify the expectations (expected inputs) and promises (expected outputs) of your interactors.
 gem 'interactor-contracts'
+
+# Gem para formatação de imagens
+gem 'rmagick', '~> 2.15', '>= 2.15.4'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

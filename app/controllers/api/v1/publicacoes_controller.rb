@@ -12,6 +12,7 @@ module Api
       def create
         context = Publicacao::Criar.call(publicacao_params: publicacao_params)
         @publicacao = context.publicacao
+        
         if context.success?
           render :show, status: 201
         else
@@ -47,7 +48,7 @@ module Api
       end
 
       def publicacao_params
-        params.permit(:id, :titulo, :subtitulo, :conteudo, :url_imagem_principal,
+        params.permit(:id, :titulo, :subtitulo, :conteudo, :file_imagem,
                       publicacoes_categorias_attributes: [:id, :publicacao_id, :categoria_id])
       end
     end
