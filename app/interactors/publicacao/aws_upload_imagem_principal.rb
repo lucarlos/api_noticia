@@ -41,7 +41,7 @@ module Publicacao
         nome_bucket = 'api-noticia-ruby-rails'
         nome_imagem = mudar_nome_imagem
         arquivo_imagem = context.arquivo_imagem.tempfile
-        regiao_bucket = 'sa-east-1'
+        regiao_bucket = 'sa-east-1'        
 
         # Aws.config = hash
 
@@ -49,8 +49,9 @@ module Publicacao
         enviar_imagem?(object_aws, nome_bucket, nome_imagem, arquivo_imagem)   
       end
 
-      def mudar_nome_imagem
-        new_name_img = "api-noticia-publicacao-#{context.id_publicacao.to_s}"
+      def mudar_nome_imagem        
+        extensao =  File.extname(context.arquivo_imagem.tempfile)
+        new_name_img = "api-noticia-publicacao-#{context.id_publicacao.to_s + extensao}"
       end
     end
 end
