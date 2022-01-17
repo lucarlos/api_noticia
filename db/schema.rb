@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_05_234815) do
+ActiveRecord::Schema.define(version: 2022_01_12_111406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2022_01_05_234815) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["nome"], name: "index_categorias_on_nome", unique: true, comment: "Index para buscar categorias por nome"
+  end
+
+  create_table "usuarios", comment: "Pessoa que acessará a aplicação", force: :cascade do |t|
+    t.string "nome", null: false, comment: "Nome do usuário"
+    t.string "email", null: false, comment: "Email do usuário"
+    t.string "password_digest", null: false, comment: "Senha para acesso a conta"
+    t.text "biografia", comment: "Comentário que aborda as características e interesses do usuário"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

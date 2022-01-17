@@ -1,0 +1,1 @@
+json.call(@usuario, :id, :nome, :email, :biografia)
