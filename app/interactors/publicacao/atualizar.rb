@@ -19,6 +19,7 @@ module Publicacao
     def call
       atribuir_nova_url_imagem_aws
       context.publicacao.assign_attributes(context.publicacao_params)
+      
       if context.publicacao_params[:url_imagem_principal]
         context.publicacao.save
       else
