@@ -6,6 +6,7 @@ module ApiNoticia
 
         included do
           before_validation :strip_titulo, :strip_subtitulo
+          before_create :set_data_criacao
         end
 
         private
@@ -16,6 +17,10 @@ module ApiNoticia
 
         def strip_subtitulo
           self.subtitulo = subtitulo&.strip
+        end
+
+        def set_data_criacao
+          self.data_criacao = DateTime.current
         end
       end
     end

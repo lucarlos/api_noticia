@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_204128) do
     t.string "subtitulo", null: false, comment: "Subtílo da publicação"
     t.text "conteudo", null: false, comment: "Conteúdo da publicação"
     t.string "url_imagem_principal", null: false, comment: "Url da imagem da publicação salva no aws"
+    t.datetime "data_criacao", precision: 6, null: false, comment: "Data de criação da publicação"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
