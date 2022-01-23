@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
     header = header.split(' ').last if header
     begin
       @decoded = JsonWebToken.decode(header)
-      @current_user = User.find(@decoded[:user_id])
+      if @decoded
+        @current_user = ApiNoticia::Models::Usuario.find(@decoded[:user_id])
+      else
+        render json: { errors: 'Não autenticado!' }, status: :unauthorized
+      end
     rescue ActiveRecord::RecordNotFound => e
       render json: { errors: e.message }, status: :unauthorized
     rescue JWT::DecodeError => e

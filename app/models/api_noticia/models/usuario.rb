@@ -2,7 +2,6 @@ module ApiNoticia
   module Models
     class Usuario < ApplicationRecord
       self.table_name = 'usuarios'
-      has_secure_password
 
       include ApiNoticia::Concerns::Usuario::Associations
       include ApiNoticia::Concerns::Usuario::Callbacks

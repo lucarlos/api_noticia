@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsuariosController < ApplicationController
-      #before_action :authorize_request, except: :create
+      before_action :authorize_request, except: :create
       before_action :set_usuario, only: %i[show update delete]
 
       def index
