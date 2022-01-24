@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsuariosController < ApplicationController
-      #before_action :authorize_request, except: :create
+      before_action :authorize_request, except: :create
       before_action :set_usuario, only: %i[show update delete]
 
       def index
@@ -10,7 +10,9 @@ module Api
                                                .per(params[:per_page])
       end
 
-      def show; end
+      def show
+        byebug
+      end
 
       def create
         context = Usuario::Criar.call(usuario_params: usuario_params)

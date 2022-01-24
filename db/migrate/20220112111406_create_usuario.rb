@@ -5,6 +5,7 @@ class CreateUsuario < ActiveRecord::Migration[7.0]
       t.string :email, null: false, comment: 'Email do usuário'
       t.string :password_digest, null: false, comment: 'Senha para acesso a conta'
       t.text :biografia, comment: 'Comentário que aborda as características e interesses do usuário'
+      t.integer :cargo, default: 0, null: false, comment: 'Cargo atribuído ao usuário'
       t.boolean :ativo, default: true, null: false, comment: 'Verifica se usuário está ou não com a conta ativa'
 
       t.timestamps

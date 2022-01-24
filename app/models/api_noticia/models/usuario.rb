@@ -4,6 +4,8 @@ module ApiNoticia
       has_secure_password
       self.table_name = 'usuarios'
 
+      enum cargos: { publico: 0, administrador: 1, moderador: 2,  }
+
       include ApiNoticia::Concerns::Usuario::Associations
       include ApiNoticia::Concerns::Usuario::Callbacks
       include ApiNoticia::Concerns::Usuario::Methods

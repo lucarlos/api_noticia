@@ -22,7 +22,12 @@ class ApplicationController < ActionController::Base
       render json: { errors: e.message }, status: :unauthorized
     end
   end
-  
+
+  def current_user(usuario)
+    session[:user_id] = usuario.id
+    @current_user ||= ApiNoticia::Models::Usuario.find(usuario.id)
+  end
+
   def formatar_erro(context, objeto)
     if context.mensagem.present?
       { mensagem: context.mensagem }
