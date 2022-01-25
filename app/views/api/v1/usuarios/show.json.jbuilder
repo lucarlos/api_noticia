@@ -1,1 +1,1 @@
-json.call(@usuario, :id, :nome, :email, :biografia)
+json.call(@usuario, :id, :nome, :email, :cargo, :ativo, :biografia)

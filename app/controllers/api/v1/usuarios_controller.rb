@@ -3,16 +3,9 @@ module Api
     class UsuariosController < ApplicationController
       before_action :authorize_request, except: :create
       before_action :set_usuario, only: %i[show update delete]
+      before_action :usuario_permissoes, except: :create
 
-      def index
-        @usuarios = ApiNoticia::Models::Usuario.order(nome: :asc)
-                                               .page(params[:page])
-                                               .per(params[:per_page])
-      end
-
-      def show
-        byebug
-      end
+      def show; end
 
       def create
         context = Usuario::Criar.call(usuario_params: usuario_params)
@@ -45,13 +38,25 @@ module Api
         end
       end
 
+      private
 
       def set_usuario
         @usuario = ApiNoticia::Models::Usuario.find(params[:id])
-      end 
+      end
 
       def usuario_params
-        params.permit(:nome, :email, :password, :biografia)
+        params.permit(:nome, :email, :password, :ativo, :cargo, :biografia)
+      end
+
+      def usuario_permissoes
+        byebug
+        unless @current_user.cargo[:publico] && @current_user.id == @usuario.id
+          unless @current_user.cargo[:moderador]
+            unless @current_user.carog[:administrador]
+              render json: { erro: "Acesso Negado" }, status: 403
+            end
+          end
+        end
       end
     end
   end
