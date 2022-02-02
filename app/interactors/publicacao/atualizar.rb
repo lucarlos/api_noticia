@@ -18,20 +18,17 @@ module Publicacao
 
     def call
       atribuir_nova_url_imagem_aws
-      context.publicacao.assign_attributes(context.publicacao_params)
-      
-      if context.publicacao_params[:url_imagem_principal]
-        context.publicacao.save
-      else
-        context.fail!(status: 422)
-      end
+      context.publicacao.assign_attributes(context.publicacao_params)      
+      context.fail!(status: 422) unless context.publicacao.save
     end
-    
+
     def atribuir_nova_url_imagem_aws
       if context.publicacao_params[:file_imagem].present?
-        context.publicacao_params[:url_imagem_principal] = Publicacao::AwsUploadImagemPrincipal
-                                                  .call(arquivo_imagem: context.publicacao_params[:file_imagem],
-                                                        id_publicacao: context.publicacao.id).response_aws
+        response_aws = Publicacao::AwsUploadImagemPrincipal.call(arquivo_imagem: context.publicacao_params[:file_imagem],
+                                                  id_publicacao: context.publicacao.id).response_aws
+        if response_aws
+          context.publicacao_params[:url_imagem_principal] = response_aws
+        end
       end
     end
 

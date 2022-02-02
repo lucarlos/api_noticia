@@ -19,7 +19,6 @@ module Publicacao
       context.publicacao = ApiNoticia::Models::Publicacao.new(context.publicacao_params)
       aws_response_img = Publicacao::AwsUploadImagemPrincipal.call(arquivo_imagem: context.publicacao.file_imagem,
                                                                    id_publicacao: last_id_return).response_aws
-
       if aws_response_img
         context.publicacao.url_imagem_principal = aws_response_img
         context.publicacao.save

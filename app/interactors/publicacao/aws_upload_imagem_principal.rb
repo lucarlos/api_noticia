@@ -18,6 +18,7 @@ module Publicacao
 
     def call
       context.response_aws = start_aws_upload_image
+      context.fail!(status: 500) unless context.response_aws
     end
 
     def enviar_imagem?(object_aws, nome_bucket, nome_imagem, arquivo_imagem)
@@ -38,9 +39,6 @@ module Publicacao
       nome_imagem = mudar_nome_imagem
       arquivo_imagem = context.arquivo_imagem.tempfile
       regiao_bucket = 'sa-east-1'
-
-      # Aws.config = hash
-
       object_aws = Aws::S3::Client.new(region: regiao_bucket)
       enviar_imagem?(object_aws, nome_bucket, nome_imagem, arquivo_imagem)
     end

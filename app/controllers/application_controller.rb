@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from Aws::Sigv4::Errors::MissingCredentialsError, with: :erro_autenticacao_aws
+
   protect_from_forgery unless: -> { request.format.json? }
 
   def record_not_found(error)
     render json: { error: error.message }, status: :not_found
+  end
+
+  def erro_autenticacao_aws
+    render json: { error: 'Erro ao autenticar no servidor AWS. Verifique as credenciais informadas!' }, status: 500
   end
 
   def formatar_erro(context, objeto)

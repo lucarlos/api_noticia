@@ -12,7 +12,6 @@ module Api
       def create
         context = Publicacao::Criar.call(publicacao_params: publicacao_params)
         @publicacao = context.publicacao
-        
         if context.success?
           render :show, status: 201
         else
