@@ -16,8 +16,7 @@ module Usuario
     end
 
     def call
-      context.usuario.assign_attributes(context.usuario_params)
-      context.fail!(status: 422) unless context.usuario.save
+      context.fail!(status: 422) unless context.usuario.destroy
     end
   end
 end

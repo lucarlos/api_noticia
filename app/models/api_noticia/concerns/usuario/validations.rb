@@ -7,7 +7,7 @@ module ApiNoticia
         included do
           validates :nome, presence: true, uniqueness: { case_sensitive: false }
           validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
-          validates :password, presence: true
+          validates :password, presence: true, on: :create
         end
       end
     end
