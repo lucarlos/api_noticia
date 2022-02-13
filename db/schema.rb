@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_204128) do
+ActiveRecord::Schema.define(version: 2022_01_12_111406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,10 +28,19 @@ ActiveRecord::Schema.define(version: 2022_01_08_204128) do
     t.text "conteudo", null: false, comment: "Conteúdo da publicação"
     t.string "url_imagem_principal", null: false, comment: "Url da imagem da publicação salva no aws"
     t.datetime "data_criacao", precision: 6, null: false, comment: "Data de criação da publicação"
+    
+  create_table "usuarios", comment: "Pessoa que acessará a aplicação", force: :cascade do |t|
+    t.string "nome", null: false, comment: "Nome do usuário"
+    t.string "email", null: false, comment: "Email do usuário"
+    t.string "password_digest", null: false, comment: "Senha para acesso a conta"
+    t.text "biografia", comment: "Comentário que aborda as características e interesses do usuário"
+    t.integer "cargo", default: 0, null: false, comment: "Cargo atribuído ao usuário"
+    t.boolean "ativo", default: true, null: false, comment: "Verifica se usuário está ou não com a conta ativa"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
   create_table "publicacoes_categorias", comment: "Tabela de associação de muitos para muitos entre publicações e categorias", force: :cascade do |t|
     t.bigint "categoria_id", null: false, comment: "Id da categoria"
     t.bigint "publicacao_id", null: false, comment: "Id da publicação"
@@ -43,4 +52,6 @@ ActiveRecord::Schema.define(version: 2022_01_08_204128) do
 
   add_foreign_key "publicacoes_categorias", "categorias"
   add_foreign_key "publicacoes_categorias", "publicacoes"
+=======
+>>>>>>> origin/autenticacao
 end
