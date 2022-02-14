@@ -5,7 +5,9 @@ module ApiNoticia
     class Publicacao < ApplicationRecord
       attr_accessor :file_imagem
 
-      self.table_name = 'publicacoes'     
+      self.table_name = 'publicacoes'
+      
+      enum situacao: { em_analise: 0, aprovada: 1, desativada: 2 }
 
       include Concerns::Publicacao::Associations
       include Concerns::Publicacao::Callbacks
